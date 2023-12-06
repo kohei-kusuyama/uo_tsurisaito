@@ -1,2 +1,20 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<%= form_with model: @post, url: posts_path, method: :post do |f| %>
+  <table class="table table-borderless">
+        <tr>
+          <td>投稿画像</td>
+          <td><%= f.file_field :post_image, accept: "image/*", class: "rounded" %></td>
+        </tr>
+        <tr>
+          <td>タイトル</td>
+          <td><%= f.text_field :title, style: "width:50%", placeholder: "タイトル", class: "rounded" %></td>
+        </tr>
+        <tr>
+          <td>投稿文</td>
+          <td><%= f.text_area :content, style: "width:50%", rows: "5", placeholder: "ここに投稿文を入力してください", class: "rounded" %></td>
+        </tr>
+        <tr>
+          <td>釣り上げた魚</td>
+          <td><%= f.text_field :title, style: "width:50%", placeholder: "タイトル", class: "rounded" %></td>
+        </tr>
+  </table>
+<% end %>

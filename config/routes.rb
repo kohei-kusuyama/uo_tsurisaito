@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
-  #管理者側
+  #--------------deviseの設定-----------------
+  #顧客用
+  #URL /users/sign_in...
+  devise_for :users, path: :users, skip: [:passwords], controllers: {
+    registrations: "public/users/registrations",
+    sessions: 'public/users/sessions'
+  }
+  
+  #管理者用
   #URL /admin/sign_in...
+  devise_for :admin,skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  #管理者側
+  #URL /admin/sign_in.. 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     # get 'users/index'
@@ -43,19 +57,15 @@ Rails.application.routes.draw do
       get "followed" => "relationships#followed", as: "followed"
   end
 
-  #--------------deviseの設定-----------------
-  #顧客用
-  #URL /users/sign_in...
-  devise_for :users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+  # #--------------deviseの設定-----------------
+  # #顧客用
+  # #URL /users/sign_in...
+  # devise_for :users, skip: [:passwords], controllers: {
+  #   registrations: "public/users/registrations",
+  #   sessions: 'public/users/sessions'
+  # }
 
-  #管理者用
-  #URL /admin/sign_in...
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
+  
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
