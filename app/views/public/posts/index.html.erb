@@ -1,2 +1,7 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled">投稿一覧</h5>
+  </div>
+</div>
+
+<%= render 'index', posts: @posts %>
