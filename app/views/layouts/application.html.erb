@@ -13,9 +13,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/">
-          <%= image_tag ("uo_logo2.png"), width: '150px', class: "img-fluid" %>
+          <%= image_tag ("37EA4820-2A16-4139-9520-A70D86C471A2.png"), width: '150px', class: "img-fluid" %>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,17 +45,17 @@
         </div>
       </nav>
     </header>
-    <main class = "pb-5">
+
+    <main>
       <% if flash[:notice] %>
         <div class="flash-notice"><%= flash[:notice] %></div>
       <% end %>
 
       <%= yield %>
     </main>
-    <footer class="text-center">
-      <div class="container">
-        <p style="color: #aaa;">&copy; うお！釣りサイト</p>
-      </div>
+
+    <footer class="text-center" style="height: 100px;">
+      <p style="color: #FFFFFF; margin-bottom: 0;">&copy; うお！釣りサイト</p>
     </footer>
 
 

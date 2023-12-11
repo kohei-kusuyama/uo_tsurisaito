@@ -1,6 +1,23 @@
 main {
-  background-color: #e6ffff;
-  width: 90%;
+  background: linear-gradient(#01D7F3, #033260);
+  // background-color: #e6ffff;
+  width: 100%;
   margin: 0 auto;
 }
 
+.jumbotron {
+  background-image: url("360_F_35653140_dxFQ6mzxZ2ye4TQWzCr2ez5NqXzKomqI.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.navbar {
+  // background-image: url(uo_logo.jpeg);
+  background-color: 		#01D7F3;
+}
+
+footer {
+  background-color: #033260;
+}

@@ -5,14 +5,21 @@
         <div class="card w-100 bg-transparent border-0">
           <div class="card-body">
             <%= link_to post_path(post) do %>
-              <div class="post-image text-center">
-                <%= image_tag post.get_post_image, size: "200x200", class: "img-fluid", style: "max-width: 100%; height: auto;" %></br>
-                <div class="card-text">
-                  <%= link_to post.title, post_path(post), class:"link" %><br>
-                </div>
+              <div class="post-image">
+                <%= image_tag post.get_post_image, size: "250x100", class: "img-fluid", style: "max-width: 100%; height: 200px;" %></br>
               </div>
             <% end %>
+            <div class ="bg-white mt-2">
+              <div class="card-title text-center">
+                <%= link_to post.title, post_path(post), class:"link" %><br>
+              </div>
+              <div class="card-text text-truncate">
+                <%= post.content %><br>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     <% end %>
+  </div>
+</div>
