@@ -1,4 +1,8 @@
-<h2>フォロー一覧</h2>
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled">フォロー一覧</h5>
+  </div>
+</div>
 <% if @users.exists? %>
   <%= render "public/users/index", users: @users %>
 <% else %>
