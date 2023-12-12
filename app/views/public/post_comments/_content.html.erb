@@ -1,0 +1,14 @@
+<table>
+   <tbody>
+    <% post.post_comments.each do |post_comment| %>
+     <tr>
+      <td> <%= image_tag(post_comment.user.get_profile_image, size:"50x50") %><br/>
+       <%= link_to post_comment.user.name, user_path(user) %></td>
+      <td><%= post_comment.content %></td>
+       <% if post_comment.user == current_user %>
+      <td><%= link_to 'Destroy',  post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+       <% end %>
+    <% end %>
+     </tr>
+  </tbody>
+</table>

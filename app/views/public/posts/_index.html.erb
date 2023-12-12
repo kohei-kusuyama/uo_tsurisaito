@@ -17,9 +17,19 @@
                 <%= post.content %><br>
               </div>
             </div>
-
-            <div id = "public_favorites_btn_<%= post.id %>">
-              <%= render 'public/favorites/btn', post: post %>
+            <!--いいねとコメントの数-->
+            <div class ="d-flex justify-content-around bg-light mt-2">
+              <!--いいねの数-->
+              <div class = "col-4 text-right p-0">
+                <div id = "public_favorites_btn_<%= post.id %>">
+                  <%= render 'public/favorites/btn', post: post %>
+                </div>
+              </div>
+              <!--コメントの数-->
+              <div class = "col-4 text-left p-0">
+                  <i class="fa-regular fa-comment-dots"></i>
+                  <%= post.post_comments.count %>
+              </div>
             </div>
           </div>
         </div>

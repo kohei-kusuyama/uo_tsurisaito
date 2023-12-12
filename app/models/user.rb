@@ -39,7 +39,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   has_one_attached :back_image
   has_many :favorites, dependent: :destroy
-  has_many :book_comments, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
 
   def get_profile_image
