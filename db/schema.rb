@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2023_12_04_145655) do
     t.integer "status", default: 0, null: false
     t.integer "delivery_area", default: 0, null: false
     t.text "introduction", default: "", null: false
+    t.string "name", default: ""
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

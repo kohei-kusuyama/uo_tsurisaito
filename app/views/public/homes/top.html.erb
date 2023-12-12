@@ -3,5 +3,7 @@
   <p class="lead">ようこそ！このサイトは日本全国の釣果情報を共有しあうSNSサイトです。</p>
   <hr class="my-4">
   <p>ルールを守って楽しく交流しましょう！</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">ゲストログイン</a>
+  <div class="row">
+          <%= link_to "ゲストログイン（閲覧用）", public_users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
 </div>

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   #--------------deviseの設定-----------------
+  #ゲストログイン
+  devise_scope :user do
+  post "/public/users/guest_sign_in" => "public/users/sessions#guest_sign_in"
+  end
+
   #顧客用
   #URL /users/sign_in...
   devise_for :users, path: :users, skip: [:passwords], controllers: {
@@ -27,7 +32,6 @@ Rails.application.routes.draw do
     get "/admin" => "admin/homes#top"
   end
 
-
   #会員側
   #URL /sign_in...
     root to: "public/homes#top"
@@ -48,8 +52,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get "users/my_page" => "users#my_page"
     resources :users, only: [:show,:edit,:update]
-    get "users/my_page" => "users#show"
     get 'users/check' => "users#check"
     patch 'users/withdraw' => 'users#withdraw'
       resource :relationships, only: [:create, :destroy]
