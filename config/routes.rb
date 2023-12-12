@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "/public/users/guest_sign_in" => "public/users/sessions#guest_sign_in"
   end
 
-  #顧客用
+  #会員用
   #URL /users/sign_in...
   devise_for :users, path: :users, skip: [:passwords], controllers: {
     registrations: "public/users/registrations",
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  #管理者側
+  #管理者用
   #URL /admin/sign_in..
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get "/admin" => "admin/homes#top"
   end
 
-  #会員側
+  #会員用
   #URL /sign_in...
     root to: "public/homes#top"
     # get 'homes/top'
@@ -56,9 +56,14 @@ Rails.application.routes.draw do
     resources :users, only: [:show,:edit,:update]
     get 'users/check' => "users#check"
     patch 'users/withdraw' => 'users#withdraw'
+  end
+
+  scope module: :public do
+    resources :users do
       resource :relationships, only: [:create, :destroy]
-      get "follower" => "relationships#follower", as: "follower"
-      get "followed" => "relationships#followed", as: "followed"
+        get "follower" => "relationships#follower", as: "follower"
+        get "followed" => "relationships#followed", as: "followed"
+    end
   end
 
   # #--------------deviseの設定-----------------

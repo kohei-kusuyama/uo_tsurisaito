@@ -7,14 +7,14 @@
 </div>
 
 <div class="container">
-  <div class="row bg-white">
+  <div class="row">
     <div class="col d-flex justify-content-center">
       <%= image_tag @user.get_back_image, size: "1200x300" %>
     </div>
   </div>
   <br>
-  <div class="row bg-white border">
-    <div class='col-11 d-flex justify-content-start'>
+  <div class="row text-white">
+    <div class='col-10 d-flex justify-content-start'>
       <div class="media">
         <%= image_tag @user.get_profile_image, size: "150x150", class: "rounded-circle" %>
       </div>
@@ -24,19 +24,25 @@
         <p><%= @user.introduction %></p>
         </div>
       </div>
-
     </div>
-    <div class="col-1 d-flex justify-content-center align-items-start pt-1">
-      <%# if current_user != @user %>
-      <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fas fa-user-cog"></i>
-      <%# end %>
+      <% if current_user == @user %>
+        <div class="col-2 d-flex justify-content-center align-items-start pt-1">
+          <%= link_to edit_user_path(@user), class: "btn btn-outline-light btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="col-2 d-flex justify-content-center align-items-start pt-1">
+          <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
+        </div>
       <% end %>
-    </div>
+
   </div>
 
-  <div class="row">
-    <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
+  <div class="row text-white">
+    <%= link_to @user.followings.count, user_followed_path(@user) %>フォロー中
+    <%= link_to @user.followers.count, user_follower_path(@user) %>フォロワー
+
   </div>
 
 

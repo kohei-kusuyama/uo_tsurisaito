@@ -12,6 +12,7 @@
 
 <div class="container mt-3">
   <div class='row justify-content-between'>
+    <!--左側-->
     <!--投稿の詳細-->
     <div class='col-md-7'>
       <div class ="mb-3">
@@ -21,9 +22,10 @@
         <%= @post.content %>
       </div>
     </div>
+    <!--右側-->
     <!--投稿したユーザー-->
-    <div class='col-md-4 bg-light'>
-      <div class="media mb-4 d-flex justify-content-start border-bottom">
+    <div class='col-md-4'>
+      <div class="media mb-2 d-flex justify-content-start border-bottom bg-light">
         <%= link_to user_path(@user) do %>
           <%= image_tag @user.get_profile_image, size: "75x75", class: "rounded-circle" %>
         <% end %>
@@ -31,16 +33,16 @@
         <h5 class="mt-0"><%= @user.nickname %></h5>
         </div>
       </div>
-      <div class='text-break'>
+      <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
+      <div class='text-break bg-light mt-2'>
       <p><%= @user.introduction %></p>
       </div>
-      <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
+      <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success" %>
+      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
     </div>
   </div>
 
-  <div class='row'>
-    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success" %>
-    <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+
 
 
 
