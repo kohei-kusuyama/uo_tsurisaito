@@ -17,6 +17,10 @@
                 <%= post.content %><br>
               </div>
             </div>
+
+            <div id = "public_favorites_btn_<%= post.id %>">
+              <%= render 'public/favorites/btn', post: post %>
+            </div>
           </div>
         </div>
       </div>
