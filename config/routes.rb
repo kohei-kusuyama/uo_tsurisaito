@@ -58,7 +58,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "users/my_page" => "users#my_page"
-    resources :users, only: [:show,:edit,:update]
+    resources :users, only: [:show,:edit,:update, :index]
     get 'users/check' => "users#check"
     patch 'users/withdraw' => 'users#withdraw'
   end
