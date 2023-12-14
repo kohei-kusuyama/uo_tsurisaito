@@ -62,4 +62,21 @@ class User < ApplicationRecord
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
      沖縄県:47
    }
+
+  # 検索機能
+  # def self.search_for(content, method)
+  #   if method == 'perfect'
+  #     User.where(nickname: content)
+  #   elsif method == 'forward'
+  #     User.where('nickname LIKE ?', content + '%')
+  #   elsif method == 'backward'
+  #     User.where('nickname LIKE ?', '%' + content)
+  #   else
+  #     User.where('nickname LIKE ?', '%' + content + '%')
+  #   end
+  # end
+  def self.search_for(content, method)
+    method == 'forward'
+      User.where('nickname LIKE ?', content + '%')
+  end
 end

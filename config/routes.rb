@@ -70,6 +70,10 @@ Rails.application.routes.draw do
         get "followed" => "relationships#followed", as: "followed"
     end
   end
+  
+  scope module: :public do
+    get "search" => "searches#search"
+  end
 
   # #--------------deviseの設定-----------------
   # #顧客用

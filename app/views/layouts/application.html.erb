@@ -22,7 +22,7 @@
         </button>
 
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <!--管理者側のヘッダー-->
             <% if admin_signed_in? %>
@@ -32,7 +32,6 @@
               <%= link_to 'マイページ', users_my_page_path, class: 'btn btn-light mr-1 mt-1' %>
               <%= link_to '新規投稿', new_post_path, class: 'btn btn-light mr-1 mt-1' %>
               <%= link_to '投稿一覧', posts_path, class: 'btn btn-light mr-1 mt-1' %>
-              <%= link_to '検索', posts_path, class: 'btn btn-light mr-1 mt-1' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light mr-1 mt-1' %>
             <!--ログイン前のヘッダー-->
             <% else %>
@@ -41,21 +40,24 @@
               <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-light mr-1' %>
 
             <% end %>
-
           </ul>
+          <div class ="ml-auto mt-1">
+          <%= render "public/searches/form" %>
+          </div>
+
         </div>
       </nav>
+
     </header>
 
     <main>
       <% if flash[:notice] %>
         <div class="flash-notice"><%= flash[:notice] %></div>
       <% end %>
-
       <%= yield %>
     </main>
 
-    <footer class="text-center" style="height: 100px;">
+    <footer class="text-center" style="height: 50px;">
       <p style="color: #FFFFFF; margin-bottom: 0;">&copy; うお！釣りサイト</p>
     </footer>
 

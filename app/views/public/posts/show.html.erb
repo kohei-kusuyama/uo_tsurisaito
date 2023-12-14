@@ -31,20 +31,25 @@
         </div>
         <!--コメントの数-->
         <div class = "col-4 text-left p-0">
+          <%= link_to post_post_comments_path(@post) do %>
           <i class="fa-regular fa-comment-dots"></i>
           <span id = "comment_count">
             <%= @post.post_comments.count %>
           </span>
+          <% end %>
         </div>
       </div>
-        <!--コメント一覧-->
-        <div id ="comment_content">
-          <%= render 'public/post_comments/content', post: @post %>
-        </div>
-        <!--コメント入力フォーム-->
-        <div id ="comment_form">
-          <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
-        </div>
+      <h5 class ="text-white">
+        >みんなのコメント
+      </h5>
+      <!--コメント一覧-->
+      <div id ="comment_content">
+        <%= render 'public/post_comments/content', post_comments: @post_comments %>
+      </div>
+      <!--コメント入力フォーム-->
+      <div id ="comment_form">
+        <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+      </div>
     </div>
 
     <!--右側-->
@@ -56,14 +61,16 @@
         <% end %>
         <div class="media-body">
         <h5 class="mt-0"><%= @user.nickname %></h5>
+        <p><%= @user.introduction %></p>
         </div>
       </div>
       <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
       <div class='text-break bg-light mt-2'>
-      <p><%= @user.introduction %></p>
       </div>
+      <% if current_user == @user %>
       <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success" %>
       <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      <% end %>
     </div>
   </div>
 </div>
