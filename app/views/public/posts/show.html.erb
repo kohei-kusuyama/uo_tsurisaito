@@ -39,6 +39,10 @@
           <% end %>
         </div>
       </div>
+      <!--コメント入力フォーム-->
+      <div id ="comment_form">
+        <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+      </div>
       <h5 class ="text-white">
         >みんなのコメント
       </h5>
@@ -46,16 +50,13 @@
       <div id ="comment_content">
         <%= render 'public/post_comments/content', post_comments: @post_comments %>
       </div>
-      <!--コメント入力フォーム-->
-      <div id ="comment_form">
-        <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
-      </div>
+      <%= link_to ">すべて表示", post_post_comments_path(@post) %>
     </div>
 
     <!--右側-->
     <!--投稿したユーザー-->
     <div class='col-md-4'>
-      <div class="media mb-2 d-flex justify-content-start border-bottom bg-light">
+      <div class="media d-flex justify-content-start border-bottom bg-light">
         <%= link_to user_path(@user) do %>
           <%= image_tag @user.get_profile_image, size: "75x75", class: "rounded-circle" %>
         <% end %>
@@ -64,9 +65,11 @@
         <p><%= @user.introduction %></p>
         </div>
       </div>
-      <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
-      <div class='text-break bg-light mt-2'>
+      <div class="mb-2 bg-light">
+        <%= link_to @user.followings.count, user_followed_path(@user) %>フォロー中
+        <%= link_to @user.followers.count, user_follower_path(@user) %>フォロワー
       </div>
+      <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
       <% if current_user == @user %>
       <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success" %>
       <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>

@@ -12,55 +12,56 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/">
-          <%= image_tag ("37EA4820-2A16-4139-9520-A70D86C471A5.png"), width: '150px', class: "img-fluid" %>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="siteWrap">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="/">
+            <%= image_tag ("37EA4820-2A16-4139-9520-A70D86C471A5.png"), width: '150px', class: "img-fluid" %>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
 
 
-        <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <!--管理者側のヘッダー-->
-            <% if admin_signed_in? %>
-              <%= link_to '会員一覧', admin_users_path, class: 'btn btn-light mr-1 mt-1' %>
-            <!--ログイン後のヘッダー-->
-            <% elsif user_signed_in? %>
-              <%= link_to 'マイページ', users_my_page_path, class: 'btn btn-light mr-1 mt-1' %>
-              <%= link_to '新規投稿', new_post_path, class: 'btn btn-light mr-1 mt-1' %>
-              <%= link_to '投稿一覧', posts_path, class: 'btn btn-light mr-1 mt-1' %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light mr-1 mt-1' %>
-            <!--ログイン前のヘッダー-->
-            <% else %>
-              <%= link_to '投稿一覧', posts_path, class: 'btn btn-light mr-1' %>
-              <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-light mr-1' %>
-              <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-light mr-1' %>
+          <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <!--管理者側のヘッダー-->
+              <% if admin_signed_in? %>
+                <%= link_to '会員一覧', admin_users_path, class: 'btn btn-light mr-1 mt-1' %>
+              <!--ログイン後のヘッダー-->
+              <% elsif user_signed_in? %>
+                <%= link_to 'マイページ', users_my_page_path, class: 'btn btn-light mr-1 mt-1' %>
+                <%= link_to '新規投稿', new_post_path, class: 'btn btn-light mr-1 mt-1' %>
+                <%= link_to '投稿一覧', posts_path, class: 'btn btn-light mr-1 mt-1' %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light mr-1 mt-1' %>
+              <!--ログイン前のヘッダー-->
+              <% else %>
+                <%= link_to '投稿一覧', posts_path, class: 'btn btn-light mr-1' %>
+                <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-light mr-1' %>
+                <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-light mr-1' %>
 
-            <% end %>
-          </ul>
-          <div class ="ml-auto mt-1">
-          <%= render "public/searches/form" %>
+              <% end %>
+            </ul>
+            <div class ="ml-auto mt-1">
+            <%= render "public/searches/form" %>
+            </div>
+
           </div>
+        </nav>
+      </header>
 
-        </div>
-      </nav>
+      <main>
+        <% if flash[:notice] %>
+          <div class="flash-notice"><%= flash[:notice] %></div>
+        <% end %>
+        <%= yield %>
+      </main>
 
-    </header>
+      <footer class="text-center" style="height: 50px;">
+        <p style="color: #FFFFFF; margin-bottom: 0;">&copy; うお！釣りサイト</p>
+      </footer>
 
-    <main>
-      <% if flash[:notice] %>
-        <div class="flash-notice"><%= flash[:notice] %></div>
-      <% end %>
-      <%= yield %>
-    </main>
-
-    <footer class="text-center" style="height: 50px;">
-      <p style="color: #FFFFFF; margin-bottom: 0;">&copy; うお！釣りサイト</p>
-    </footer>
-
-
+    </div>
   </body>
+
 </html>

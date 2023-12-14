@@ -1,8 +1,16 @@
+.siteWrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
 main {
   background: linear-gradient(#01D7F3, #033260);
   // background-color: #e6ffff;
   width: 100%;
   margin: 0 auto;
+  flex: 1;
 }
 
 .jumbotron {
@@ -13,11 +21,19 @@ main {
   background-attachment: fixed;
 }
 
-.navbar {
+header {
   // background-image: url(uo_logo.jpeg);
   background-color: 		#01D7F3;
 }
 
 footer {
   background-color: #033260;
+}
+
+.f-link {
+  color: white ;
+}
+
+.link {
+  color: #000000 ;
 }

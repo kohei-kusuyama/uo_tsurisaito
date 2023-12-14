@@ -1,6 +1,8 @@
 class Public::PostCommentsController < ApplicationController
   def index
-    @post_comment = PostComment.all
+    @post = Post.find(params[:post_id])
+    @post_comments = @post.post_comments.all
+    @post_comment = PostComment.new
   end
 
   def create
@@ -8,6 +10,8 @@ class Public::PostCommentsController < ApplicationController
     content = current_user.post_comments.new(post_comment_params)
     content.post_id = @post.id
     content.save
+    @post_comments = @post.post_comments.order('created_at DESC').limit(5)
+
     # redirect_to request.referer
   end
 

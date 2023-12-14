@@ -36,20 +36,11 @@
           <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
         </div>
       <% end %>
-
   </div>
 
   <div class="row text-white">
-    <%= link_to @user.followings.count, user_followed_path(@user) %>フォロー中
-    <%= link_to @user.followers.count, user_follower_path(@user) %>フォロワー
-
+    <%= link_to @user.followings.count, user_followed_path(@user), class: "f-link" %>フォロー中
+    <%= link_to @user.followers.count, user_follower_path(@user), class: "f-link" %>フォロワー
   </div>
-
   <%= render 'public/posts/index', posts: @posts %>
-
-
 </div>
-
-
-
-<%#= render 'posts/index', posts: @posts %>
