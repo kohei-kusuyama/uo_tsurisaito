@@ -58,9 +58,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "users/my_page" => "users#my_page"
-    resources :users, only: [:show,:edit,:update, :index]
     get 'users/check' => "users#check"
     patch 'users/withdraw' => 'users#withdraw'
+    resources :users, only: [:show,:edit,:update]
   end
 
   scope module: :public do
@@ -70,7 +70,7 @@ Rails.application.routes.draw do
         get "followed" => "relationships#followed", as: "followed"
     end
   end
-  
+
   scope module: :public do
     get "search" => "searches#search"
   end

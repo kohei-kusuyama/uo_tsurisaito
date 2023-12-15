@@ -1,2 +1,26 @@
-<h1>Public::Users#check</h1>
-<p>Find me in app/views/public/users/check.html.erb</p>
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled">退会確認画面</h5>
+  </div>
+</div>
+
+<div class ="container">
+  <div class ="row justify-content-center">
+    <h2 class ="text-center text-danger">
+      本当に退会しますか？
+    </h2>
+  </div>
+  <div class ="row justify-content-center">
+    <p class ="text-center">
+      退会すると、フォローの情報や<br>
+      これまでの投稿が閲覧できなくなります。<br>
+      また、同じアカウントへの再ログインはできなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。
+    </p>
+  </div>
+  <div class ="row justify-content-center">
+  <%= link_to "退会しない", users_my_page_path, :class => "btn btn-light mr-1" %>
+  <%= link_to "退会する", users_withdraw_path, method: :patch, :class => "btn btn-danger ml-1", data: { confirm: "本当に退会しますか？" }  %>
+  </div>
+</div>
+

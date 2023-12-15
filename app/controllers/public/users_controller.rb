@@ -29,6 +29,11 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+    @user = User.find(current_user.id)
+    @user.update(status: 1)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 end
 

@@ -79,4 +79,11 @@ class User < ApplicationRecord
     method == 'forward'
       User.where('nickname LIKE ?', content + '%')
   end
+
+  enum status: { active: 0, withdrawal: 1, stop: 2 }
+
+  def active_for_authentication?
+    super && (status == "active")
+  end
+
 end

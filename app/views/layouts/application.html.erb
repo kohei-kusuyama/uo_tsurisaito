@@ -28,6 +28,7 @@
               <!--管理者側のヘッダー-->
               <% if admin_signed_in? %>
                 <%= link_to '会員一覧', admin_users_path, class: 'btn btn-light mr-1 mt-1' %>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-light mr-1 mt-1' %>
               <!--ログイン後のヘッダー-->
               <% elsif user_signed_in? %>
                 <%= link_to 'マイページ', users_my_page_path, class: 'btn btn-light mr-1 mt-1' %>
