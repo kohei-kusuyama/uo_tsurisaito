@@ -86,4 +86,8 @@ class User < ApplicationRecord
     super && (status == "active")
   end
 
+  def name
+    self.last_name+" "+self.first_name
+  end
+
 end
