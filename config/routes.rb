@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     get "users/my_page" => "users#my_page"
     get 'users/check' => "users#check"
     patch 'users/withdraw' => 'users#withdraw'
+    get 'users/favorites' => 'users#favorites'
     resources :users, only: [:show,:edit,:update]
   end
 
