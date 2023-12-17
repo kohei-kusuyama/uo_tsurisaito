@@ -41,7 +41,7 @@
   <div class="row text-white">
     <%= link_to @user.followings.count, user_followed_path(@user), class: "f-link" %>フォロー中
     <%= link_to @user.followers.count, user_follower_path(@user), class: "f-link" %>フォロワー
-    <%#= link_to "いいね一覧", users_favorites_path(@user), class: "f-link" %>
+    <%= link_to "いいね一覧", favorites_user_path(@user), class: "f-link" %>
   </div>
 
   <%= render 'public/posts/index', posts: @posts %>
