@@ -60,8 +60,19 @@ Rails.application.routes.draw do
     get "users/my_page" => "users#my_page"
     get 'users/check' => "users#check"
     patch 'users/withdraw' => 'users#withdraw'
-    get 'users/favorites' => 'users#favorites'
-    resources :users, only: [:show,:edit,:update]
+    # get 'users/:id/favorites' => 'users#favorites'
+    resources :users, only: [:show,:edit,:update] do
+      member do
+        get :favorites
+      end
+    end
+  
+  #   resources :users  do
+  # member do
+  #   get :logout
+  # end
+
+
   end
 
   scope module: :public do

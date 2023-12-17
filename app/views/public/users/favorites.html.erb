@@ -1,11 +1,7 @@
-<table class="table">
-        <tbody>
-          <% @favorite_posts.each do |post| %>
-          <tr>
-            <td>
-              <%= link_to post.title, post_path(post) %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled">いいね一覧</h5>
+  </div>
+</div>
+
+<%= render 'public/posts/index', posts: @favorite_posts %>
