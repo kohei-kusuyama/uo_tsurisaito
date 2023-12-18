@@ -2,7 +2,7 @@ class CreateFishings < ActiveRecord::Migration[6.1]
   def change
     create_table :fishings do |t|
       
-      t.integer :post_id,       null: false, default: ""
+      t.integer :post_id,       null: false
       t.string :type,           null: false, default: ""
       t.string :point,          null: false, default: ""
       t.string :size,           null: false, default: ""
