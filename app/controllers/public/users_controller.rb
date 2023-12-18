@@ -2,11 +2,15 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.post
+    favorite_post_ids = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.where(id: favorite_post_ids)
   end
 
   def my_page
     @user = current_user
     @posts = @user.post
+    favorite_post_ids = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.where(id: favorite_post_ids)
     render :show
   end
 
@@ -36,11 +40,11 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def favorites
-    @user = User.find(params[:id])
-    favorite_post_ids = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.where(id: favorite_post_ids)
-  end
+  # def favorites
+  #   @user = User.find(params[:id])
+  #   favorite_post_ids = Favorite.where(user_id: @user.id).pluck(:post_id)
+  #   @favorite_posts = Post.where(id: favorite_post_ids)
+  # end
 end
 
 

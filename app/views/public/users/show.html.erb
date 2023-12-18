@@ -36,13 +36,28 @@
           <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
         </div>
       <% end %>
+
+      <div class="text-white">
+        <%= link_to @user.followings.count, user_followed_path(@user), class: "f-link" %>フォロー中
+        <%= link_to @user.followers.count, user_follower_path(@user), class: "f-link" %>フォロワー
+        <%#= link_to "いいね一覧", favorites_user_path(@user), class: "f-link" %>
+      </div>
   </div>
 
-  <div class="row text-white">
-    <%= link_to @user.followings.count, user_followed_path(@user), class: "f-link" %>フォロー中
-    <%= link_to @user.followers.count, user_follower_path(@user), class: "f-link" %>フォロワー
-    <%= link_to "いいね一覧", favorites_user_path(@user), class: "f-link" %>
-  </div>
-
-  <%= render 'public/posts/index', posts: @posts %>
+    <ul class="nav nav-tabs nav-justified mt-4">
+      <li class="nav-item">
+        <a class="nav-link active" href="#tab1" data-toggle="tab">投稿一覧</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link inactive" href="#tab2" data-toggle="tab">いいね一覧</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="tab1" class="tab-pane active">
+        <%= render 'public/posts/index', posts: @posts %>
+      </div>
+      <div id="tab2" class="tab-pane">
+        <%= render 'public/posts/index', posts: @favorite_posts %>
+      </div>
+    </div>
 </div>
