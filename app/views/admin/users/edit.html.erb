@@ -1,0 +1,48 @@
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled"><%= @user.name %>(<%= @user.nickname %>)さんの詳細編集</h5>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+      <table class="table table-borderless text-white">
+        <tr>
+          <td>ユーザーID</td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td>氏名</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td>ニックネーム</td>
+          <td><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td>ステータス</td>
+          <td>
+            <%= f.radio_button :status, :active %>
+            <%= label :status_0, "有効", value: 0 %>
+
+            <%= f.radio_button :status, :withdrawal %>
+            <%= label :status_1, "退会済", value: 1 %>
+
+            <%= f.radio_button :status, :stop %>
+            <%= label :status_2, "停止中", value: 2 %>
+          </td>
+        </tr>
+      </table>
+      <div class="row d-flex justify-content-center">
+        <tr>
+          <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+        </tr>
+      </div>
+    <% end %>
+  </div>
+</div>

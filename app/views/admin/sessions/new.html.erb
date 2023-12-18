@@ -1,0 +1,25 @@
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled">管理者ログイン</h5>
+  </div>
+</div>
+
+<%= form_with(model: Admin.new, url: new_admin_session_path) do |f| %>
+   <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="row d-flex justify-content-center">
+          <div class="offset-1 col-2">
+            <div class="field my-3" >
+              <%= f.label :email, "メールアドレス", class: "my-3" %></br>
+              <%= f.label :encrypted_password, "パスワード", class: "my-3" %>
+            </div>
+          </diV>
+
+          <div class="col-4">
+            <div class="field my-3">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", size: 40, class: "rounded mx-auto my-3" %></br>
+              <%= f.password_field :password, autocomplete: "current-password", size: 40, class: "rounded password my-3" %></br>
+              <%= f.submit "ログイン",class:"btn btn-primary my-3" %>
+            </div>
+          </div>
+      </div>
+    <% end %>

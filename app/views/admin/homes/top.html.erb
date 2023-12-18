@@ -1,0 +1,41 @@
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled">ユーザー一覧</h5>
+  </div>
+</div>
+
+<div class ="container">
+  <div class ="row">
+    <table class ="table table-borderless text-white">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>ニックネーム</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody class ="user_list text-white">
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user), class: "f-link"  %></td>
+            <td><%= user.nickname %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.status == "active" %>
+                <a>有効</a>
+              <% elsif user.status == "withdrawal" %>
+                <a class ="text-danger">退会済</a>
+              <% else %>
+                <a class ="text-warning">停止中</a>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
