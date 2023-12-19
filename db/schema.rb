@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_04_145655) do
+ActiveRecord::Schema.define(version: 2023_12_19_104946) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,14 +71,14 @@ ActiveRecord::Schema.define(version: 2023_12_04_145655) do
   create_table "post_comments", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.string "title", default: "", null: false
     t.string "category", default: "", null: false
     t.string "point", default: "", null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2023_12_04_145655) do
     t.string "address", default: "", null: false
     t.integer "status", default: 0, null: false
     t.integer "delivery_area", default: 0, null: false
-    t.text "introduction", default: "", null: false
+    t.text "introduction"
     t.string "name", default: ""
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
