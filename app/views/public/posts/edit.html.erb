@@ -8,34 +8,29 @@
   <div class="row d-flex justify-content-center">
     <%= form_with model: @post, url: post_path, method: :patch do |f| %>
       <div class="form-group">
-        <label class="text-secondary">投稿画像</label><br>
+        <label class="text-dark">投稿画像</label><br>
         <%= f.file_field :post_image %>
       </div>
       <div id="new-image"></div>
 
       <div class="form-group">
-        <label class="text-secondary">タイトル</label><br>
-        <%= f.text_field :title, size: "56" %>
+        <label class="text-darky">魚種</label><br>
+        <%= f.text_field :category, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <label class="text-secondary">魚種</label><br>
-        <%= f.text_field :category, size: "56" %>
+        <label class="text-dark">場所</label><br>
+        <%= f.text_field :address, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <label class="text-secondary">場所</label><br>
-        <%= f.text_field :point, size: "56" %>
+        <label class="text-dark">サイズ</label><br>
+        <%= f.text_field :size, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <label class="text-secondary">サイズ</label><br>
-        <%= f.text_field :size, size: "56" %>
-      </div>
-
-      <div class="form-group">
-        <label class="text-secondary">投稿文</label><br>
-        <%= f.text_area :content, size: "59x10" %>
+        <label class="text-dark">投稿文</label><br>
+        <%= f.text_area :content, rows: 7, class: "form-control" %>
       </div>
 
       <div class="row d-flex justify-content-center">

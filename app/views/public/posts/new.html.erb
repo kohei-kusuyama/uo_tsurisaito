@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mt-2 mb-3">
   <div class="row d-flex justify-content-center">
     <%= form_with model: @post, url: posts_path, method: :post do |f| %>
       <div class="form-group">
@@ -13,29 +13,29 @@
       </div>
       <div id="new-image"></div>
 
-      <div class="form-group">
-        <label class="text-dark">タイトル</label><br>
-        <%= f.text_field :title, size: "56" %>
-      </div>
+      <!--<div class="form-group">-->
+      <!--  <label class="text-dark">タイトル</label><br>-->
+      <!--  <%#= f.text_field :title, size: "56" %>-->
+      <!--</div>-->
 
       <div class="form-group">
         <label class="text-dark">魚種</label><br>
-        <%= f.text_field :category, size: "56" %>
+        <%= f.text_field :category, placeholder: "例：イワシ、アジ、タイ", class: "form-control" %>
       </div>
 
       <div class="form-group">
         <label class="text-dark">場所</label><br>
-        <%= f.text_field :point, size: "56" %>
+        <%= f.text_field :address, placeholder: "例：〇〇市 〇〇漁港", class: "form-control" %>
       </div>
 
       <div class="form-group">
         <label class="text-dark">サイズ</label><br>
-        <%= f.text_field :size, size: "56" %>
+        <%= f.text_field :size, placeholder: "例：〇〇cm、指3本分", class: "form-control" %>
       </div>
 
       <div class="form-group">
         <label class="text-dark">投稿文</label><br>
-        <%= f.text_area :content, size: "59x10" %>
+        <%= f.text_area :content, placeholder: "ここに本文を入力してください", rows: 7, class: "form-control" %>
       </div>
 
       <div class="row d-flex justify-content-center">
