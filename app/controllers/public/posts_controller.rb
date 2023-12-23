@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :content, :post_image, :category, :point, :size)
+      params.require(:post).permit(:title, :content, :post_image, :category, :point, :size, :address)
     end
 
 end

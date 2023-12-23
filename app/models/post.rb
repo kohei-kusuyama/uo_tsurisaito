@@ -39,4 +39,7 @@ class Post < ApplicationRecord
     method == 'forward'
       Post.where('point LIKE ?', content + '%')
   end
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end

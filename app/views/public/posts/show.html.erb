@@ -5,6 +5,8 @@
       さんの
       <%#= @post.created_at.strftime("%Y年%m月%d日") %>
       <%= @post.category %>
+      <%= @post.size %>
+      <%= @post.address %>
       の釣果
     </h5>
   </div>
@@ -51,6 +53,13 @@
         <%= render 'public/post_comments/content', post_comments: @post_comments %>
       </div>
       <%#= link_to ">すべて表示", post_post_comments_path(@post) %>
+      <% if @post.latitude && @post.longitude %>
+      <h5 class ="text-white">
+        釣行場所
+      </h5>
+        <div id="map">
+        </div>
+      <% end %>
     </div>
 
     <!--右側-->
@@ -77,3 +86,18 @@
     </div>
   </div>
 </div>
+<style>
+  #map {
+    height: 500px;
+    width: 100%;
+  }
+</style>
+<script>
+  function initMap(){
+    let map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
+    zoom: 15
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
