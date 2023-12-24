@@ -3,6 +3,7 @@
     <h5 class="nav-link disabled">新規登録</h5>
   </div>
 </div>
+<%= render "public/shared/error_messages", resource: resource %>
 <div class="container">
   <div class="row d-flex justify-content-center">
     <%= form_with(model: User.new, url: user_registration_path) do |f| %>

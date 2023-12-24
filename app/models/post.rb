@@ -42,4 +42,9 @@ class Post < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  validates :post_image, presence: true
+  validates :category, presence: true
+  validates :size, presence: true
+  validates :address, presence: true
 end
