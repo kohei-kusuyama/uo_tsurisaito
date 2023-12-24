@@ -31,8 +31,12 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.nickname = "guestuser"
+      user.nickname = "ゲスト"
     end
+  end
+
+  def guest
+    email == GUEST_USER_EMAIL
   end
 
   has_many :post, dependent: :destroy

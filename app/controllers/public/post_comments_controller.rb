@@ -1,4 +1,5 @@
 class Public::PostCommentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index]
   def index
     @post = Post.find(params[:post_id])
     @post_comments = @post.post_comments.all

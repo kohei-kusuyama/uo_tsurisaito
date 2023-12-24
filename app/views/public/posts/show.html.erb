@@ -52,13 +52,16 @@
       <div id ="comment_content">
         <%= render 'public/post_comments/content', post_comments: @post_comments %>
       </div>
-      <%#= link_to ">すべて表示", post_post_comments_path(@post) %>
+      <!--mapの表示-->
       <% if @post.latitude && @post.longitude %>
       <h5 class ="text-white">
         釣行場所
       </h5>
         <div id="map">
         </div>
+        <p class ="text-white">
+          ピンの位置が釣果のポイントを示すものではありません
+        </p>
       <% end %>
     </div>
 
@@ -78,14 +81,16 @@
         <%= link_to @user.followings.count, user_followed_path(@user) %>フォロー中
         <%= link_to @user.followers.count, user_follower_path(@user) %>フォロワー
       </div>
-      <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
       <% if current_user == @user %>
-      <%= link_to '投稿を編集', edit_post_path(@post), class: "btn btn-sm btn-success" %>
-      <%= link_to '投稿を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+        <%= link_to '投稿を編集', edit_post_path(@post), class: "btn btn-sm btn-success" %>
+        <%= link_to '投稿を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      <% else %>
+        <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
       <% end %>
     </div>
   </div>
 </div>
+<!--mapの設定-->
 <style>
   #map {
     height: 500px;
@@ -98,6 +103,14 @@
     center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
     zoom: 15
     });
+    let marker = new google.maps.Marker({
+    position:  {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
+    map: map
+    });
+    let place = document.getElementById('keyword');
+    let geocoder = new google.maps.Geocoder();
+
+    
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>

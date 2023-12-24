@@ -1,0 +1,10 @@
+<% if obj.errors.any? %>
+  <div id="error_explanation">
+    <h5><%= pluralize(obj.errors.count, "個のエラー") %> を検出しました。下記の項目を確認してください</h5>
+    <ul>
+      <% obj.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

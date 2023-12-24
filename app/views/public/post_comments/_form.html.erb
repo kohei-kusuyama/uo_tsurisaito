@@ -1,6 +1,12 @@
-<div class ="mt-2">
-  <%= form_with model: [post, post_comment], local: false do |f| %>
-    <%= f.text_area :content, placeholder: "コメントをここに", class: "w-100" %>
-    <%= f.submit "送信" %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <div class ="mt-2">
+    <%= form_with model: [post, post_comment], local: false do |f| %>
+      <%= f.text_area :content, placeholder: "コメントをここに", class: "w-100" %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+<% else %>
+  <div class ="mt-2">
+    <%= link_to "コメントするにはログインが必要です", new_user_session_path, class: 'btn btn-warning' %>
+  </div>
+<% end %>
