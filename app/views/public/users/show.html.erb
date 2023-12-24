@@ -40,7 +40,6 @@
       <div class="text-white">
         <%= link_to @user.followings.count, user_followed_path(@user), class: "f-link" %>フォロー中
         <%= link_to @user.followers.count, user_follower_path(@user), class: "f-link" %>フォロワー
-        <%#= link_to "いいね一覧", favorites_user_path(@user), class: "f-link" %>
       </div>
   </div>
 

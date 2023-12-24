@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   def new
     @post = Post.new
   end

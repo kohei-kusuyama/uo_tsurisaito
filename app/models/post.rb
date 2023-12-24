@@ -32,13 +32,13 @@ class Post < ApplicationRecord
 
   def self.search_for(content, method)
     method == 'forward'
-      Post.where('category LIKE ?', content + '%')
+      Post.where('category LIKE ? OR address LIKE ?', '%' + content + '%','%' + content + '%')
   end
 
-  def self.search_for(content, method)
-    method == 'forward'
-      Post.where('point LIKE ?', content + '%')
-  end
+  # def self.search_for(content, method)
+  #   method == 'forward'
+  #     Post.where(' LIKE ?', content + '%')
+  # end
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

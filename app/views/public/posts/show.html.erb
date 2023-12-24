@@ -81,10 +81,11 @@
         <%= link_to @user.followings.count, user_followed_path(@user) %>フォロー中
         <%= link_to @user.followers.count, user_follower_path(@user) %>フォロワー
       </div>
-      <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
       <% if current_user == @user %>
-      <%= link_to '投稿を編集', edit_post_path(@post), class: "btn btn-sm btn-success" %>
-      <%= link_to '投稿を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+        <%= link_to '投稿を編集', edit_post_path(@post), class: "btn btn-sm btn-success" %>
+        <%= link_to '投稿を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      <% else %>
+        <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
       <% end %>
     </div>
   </div>

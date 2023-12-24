@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show]
+  before_action :check_guest, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
     @posts = @user.post
@@ -53,3 +55,9 @@ private
 def user_params
   params.require(:user).permit(:last_name, :first_name,  :delivery_area, :email, :active, :nickname, :introduction, :profile_image, :back_image)
 end
+def check_guest
+    if current_user.guest
+      flash[:notice] = "ゲストユーザーは編集できません。"
+      redirect_to users_my_page_path
+    end
+  end
