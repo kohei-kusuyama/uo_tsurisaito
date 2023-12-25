@@ -1,2 +1,26 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="nav justify-content-center bg-white border-bottom" >
+  <div class="nav-item" style = "padding-top: 5px;">
+    <h5 class="nav-link disabled">
+      このサイトについて
+    </h5>
+  </div>
+</div>
+
+<div class="container bg-light mt-3">
+  <div class="row justify-content-center">
+    <h4>ご利用いただきましてありがとうございます。</h4>
+    <p class="text-center">
+      当サイトは釣りを初めてすぐの初心者の方や、自宅周辺ではどういった魚が釣れているのだろうとお考えの方、<br>
+      釣り歴も長くさまざまな情報を発信、交換したい釣り上級者の方まで幅広く使っていただけるサービスとなっております。<br>
+
+
+      釣果情報以外でも海岸の清掃状況や足場の状態、周辺施設の投稿をしていただいても大丈夫です。<br>
+      当サイトを試用してみたい方は下記ボタンよりゲストログインをしていただけます。
+    </p>
+    <%= link_to "ゲストログイン", public_users_guest_sign_in_path, class: "btn btn-primary btn-sm btn-block mb-3 ml-5 mr-5 sign_in", method: :post %>
+  </div>
+</div>
+
+
+
+

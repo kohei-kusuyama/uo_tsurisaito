@@ -19,31 +19,31 @@
       </div>
       <div class="form-group">
         <label class="text-secondary">名前（姓）</label><br>
-        <%= f.text_field :last_name %>
+        <%= f.text_field :last_name,class: "form-control" %>
       </div>
       <div class="form-group">
         <label class="text-secondary">名前（名）</label><br>
-        <%= f.text_field :first_name %>
+        <%= f.text_field :first_name,class: "form-control" %>
       </div>
 
       <div class="form-group">
         <label class="text-secondary">ニックネーム</label><br>
-        <%= f.text_field :nickname %>
+        <%= f.text_field :nickname,class: "form-control" %>
       </div>
 
       <div class="form-group">
         <label class="text-secondary">自己紹介</label><br>
-        <%= f.text_area :introduction, size: "59x10" %>
+        <%= f.text_area :introduction, rows: 7, class: "form-control" %>
       </div>
 
       <div class="form-group">
         <label class="text-secondary">住所</label><br>
-        <%= f.select :delivery_area, User.delivery_areas.keys, {}, {class: 'hoge'} %>
+        <%= f.select :delivery_area, User.delivery_areas.keys, {}, {class: 'hoge form-control'} %>
       </div>
 
       <div class="form-group">
         <label class="text-secondary">メールアドレス</label><br>
-        <%= f.email_field :email, placeholder: "sample@example.com" %>
+        <%= f.email_field :email, placeholder: "sample@example.com",class: "form-control" %>
       </div>
 
       <div class = "d-flex justify-content-center">
