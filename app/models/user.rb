@@ -39,6 +39,10 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 
+  def admin
+    admin
+  end
+
   has_many :post, dependent: :destroy
   has_one_attached :profile_image
   has_one_attached :back_image
