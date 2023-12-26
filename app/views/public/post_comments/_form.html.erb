@@ -5,6 +5,8 @@
       <%= f.submit "送信" %>
     <% end %>
   </div>
+<% elsif admin_signed_in? %>
+  <button type="button" class="btn btn-warning mt-2">管理者権限ではコメントできません</button>
 <% else %>
   <div class ="mt-2">
     <%= link_to "コメントするにはログインが必要です", new_user_session_path, class: 'btn btn-warning' %>

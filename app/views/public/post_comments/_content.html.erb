@@ -8,6 +8,9 @@
         <% if post_comment.user == current_user %>
           <%= link_to '削除', post_post_comment_path(post_comment.post, post_comment),
               method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+        <% elsif admin_signed_in? %>
+          <%= link_to '削除', post_post_comment_path(post_comment.post, post_comment),
+              method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
         <% end %>
     </div>
     <div class ="text-break bg-light">
