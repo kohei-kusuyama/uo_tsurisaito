@@ -23,6 +23,11 @@
       <div class=' text-break bg-light'>
         <%= @post.content %>
       </div>
+      <div class="bg-light">
+        <% @post.tags.each do |tag| %>
+        <span class="badge bg-secondary"><%= tag.name %></span>
+        <% end %>
+      </div>
       <!--いいねとコメントの数-->
       <div class ="d-flex justify-content-around bg-light mt-2">
         <!--いいねの数-->

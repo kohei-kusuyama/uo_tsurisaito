@@ -6,8 +6,13 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    tags = Vision.get_post_image(post_params[:post_image])
+    # @post.score = Language.get_data(post_params[:body])
     @post.user_id = current_user.id
     if @post.save
+      tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
 
       flash[:notice] = "投稿が完了いたしました"
       redirect_to post_path(@post) #リダイレクト先は詳細（show）ページ
@@ -34,7 +39,12 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    tags = Vision.get_post_image(post_params[:post_image])
     @post.update(post_params)
+    @post.tags.destroy_all
+    tags.each do |tag|
+      @post.tags.create(name: tag)
+    end
     redirect_to post_path(@post.id)
   end
 
