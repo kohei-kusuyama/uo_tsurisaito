@@ -90,7 +90,7 @@
         <%= link_to '投稿を編集', edit_post_path(@post), class: "btn btn-sm btn-success" %>
         <%= link_to '投稿を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
       <% elsif admin_signed_in? %>
-        <%= link_to '投稿を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+        <%= link_to '投稿を削除simasu', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
       <% else %>
         <%= render "public/relationships/btn", user: @user, options: { class: "" } %>
       <% end %>
