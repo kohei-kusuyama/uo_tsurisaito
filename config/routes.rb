@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get "/admin" => "admin/homes#top"
   end
 
-  resources :posts
+  # resources :posts
   namespace :admin do
     resources :posts, only: [:index, :new, :create, :show,  :edit, :destroy]
   end
