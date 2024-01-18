@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
+  # skip_before_action :authenticate_admin!, if: :admin_url
   def new
     @post = Post.new
   end
@@ -23,7 +24,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @post = Post.new
+    #@post = Post.new
   end
 
   def show

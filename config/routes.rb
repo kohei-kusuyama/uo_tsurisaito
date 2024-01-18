@@ -32,6 +32,11 @@ Rails.application.routes.draw do
     get "/admin" => "admin/homes#top"
   end
 
+  # resources :posts
+  namespace :admin do
+    resources :posts, only: [:index, :new, :create, :show,  :edit, :destroy]
+  end
+
   #会員用
   #URL /sign_in...
     root to: "public/homes#top"
@@ -66,7 +71,7 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
-  
+
   #   resources :users  do
   # member do
   #   get :logout
