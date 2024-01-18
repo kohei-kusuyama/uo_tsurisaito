@@ -25,7 +25,9 @@
       </div>
       <div class="bg-light">
         <% @post.tags.each do |tag| %>
-          <%= link_to tag.name, ＃＃＃＃＃＃＃, class: "btn btn-sm btn-secondary" %>
+        <span class="badge bg-secondary">
+          <%= tag.name %>
+        </span>
         <% end %>
       </div>
       <!--いいねとコメントの数-->
