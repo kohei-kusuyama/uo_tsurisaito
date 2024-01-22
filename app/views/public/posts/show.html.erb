@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="mb-2 bg-light">
-        <%= link_to @user.followings.count, user_followed_path(@user) %>フォロー中
+        <%= link_to @user.followings.count, user_followed_path(@user) %>フォロー
         <%= link_to @user.followers.count, user_follower_path(@user) %>フォロワー
       </div>
       <% if current_user == @user %>
