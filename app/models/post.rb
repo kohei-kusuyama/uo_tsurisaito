@@ -31,9 +31,12 @@ class Post < ApplicationRecord
   #   end
   # end
 
-  def self.search_for(content, method)
-    method == 'forward'
-      Post.where('category LIKE ? OR address LIKE ?', '%' + content + '%','%' + content + '%')
+  def self.c_search_for(content)
+      Post.where('category LIKE ?', '%' + content + '%')
+  end
+
+  def self.a_search_for(content)
+      Post.where('address LIKE ?', '%' + content + '%')
   end
 
   # def self.search_for(content, method)
