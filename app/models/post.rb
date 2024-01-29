@@ -5,7 +5,6 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :tags, dependent: :destroy
 
-  # has_one_attached :post
   has_one_attached :post_image
 
 
@@ -18,31 +17,14 @@ class Post < ApplicationRecord
   def get_post_image
     (post_image.attached?) ? post_image: 'no_image.jpg'
   end
-
-  # def self.search_for(content, method)
-  #   if method == 'perfect'
-  #     Post.where(title: content)
-  #   elsif method == 'forward'
-  #     Post.where('title LIKE ?', content + '%')
-  #   elsif method == 'backward'
-  #     Post.where('title LIKE ?', '%' + content)
-  #   else
-  #     Post.where('title LIKE ?', '%' + content + '%')
-  #   end
-  # end
-
-  def self.c_search_for(content)
-      Post.where('category LIKE ?', '%' + content + '%')
-  end
-
+  
   def self.a_search_for(content)
       Post.where('address LIKE ?', '%' + content + '%')
   end
-
-  # def self.search_for(content, method)
-  #   method == 'forward'
-  #     Post.where(' LIKE ?', content + '%')
-  # end
+  
+  def self.c_search_for(content)
+      Post.where('category LIKE ?', '%' + content + '%')
+  end
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
